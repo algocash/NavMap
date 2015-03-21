@@ -105,6 +105,7 @@ public class MainActivity extends ActionBarActivity
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!").snippet("Consider yourself located"));
     }
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
