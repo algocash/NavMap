@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -27,7 +28,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -107,7 +107,8 @@ public class MainActivity extends ActionBarActivity
         mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!").snippet("Consider yourself located"));
 
         for (int i=0; i<(int)(Math.random()*10); i++) {
-            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).position(new LatLng(latitude + Math.random() * .02-0.01, longitude + Math.random() * .02-0.01)).title("Doc"+i).snippet("Neurologist"));
+            int DoctType = (int)Math.floor(Math.random()*ConstantsClass.DoctorTypeColor.length);
+            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(ConstantsClass.DoctorTypeColor[DoctType])).position(new LatLng(latitude + Math.random() * .02-0.01, longitude + Math.random() * .02-0.01)).title("Doc"+i).snippet(ConstantsClass.DoctorTypelist[DoctType]));
         }
     }
 
